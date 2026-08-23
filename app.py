@@ -336,7 +336,7 @@ if st.button("Scan Token", type="primary"):
 
                  for holder in top_holders[:10]
         )
-        if top10_holder_pct >= 70:
+    if top10_holder_pct >= 70:
         
         score += 30
         
