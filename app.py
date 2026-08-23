@@ -330,11 +330,11 @@ if st.button("Scan Token", type="primary"):
 
         if top_holders:
 
-        top10_holder_pct = sum(
+            top10_holder_pct = sum(
 
-        float(holder.get("pct", 0) or 0)
+                float(holder.get("pct", 0) or 0)
 
-        for holder in top_holders[:10]
+                 for holder in top_holders[:10]
         )
         if top10_holder_pct >= 70:
         
