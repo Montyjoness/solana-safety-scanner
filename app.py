@@ -322,6 +322,49 @@ if st.button("Scan Token", type="primary"):
 
         rugcheck_available = True
 
+        token_meta = rug_data.get("tokenMeta") or {}
+
+        top_holders = rug_data.get("topHolders") or []
+
+        top10_holder_pct = 0.0
+
+        if top_holders:
+
+        top10_holder_pct = sum(
+
+        float(holder.get("pct", 0) or 0)
+
+        for holder in top_holders[:10]
+        )
+        if top10_holder_pct >= 70:
+        
+        score += 30
+        
+        onchain_warnings.append(
+        
+            f"CRITICAL: Top 10 holders control {top10_holder_pct:.1f}% of supply"
+        
+        )
+        
+        elif top10_holder_pct >= 50:
+        
+            score += 20
+            
+            onchain_warnings.append(
+            
+                f"HIGH: Top 10 holders control {top10_holder_pct:.1f}% of supply"
+            
+            )
+        
+        elif top10_holder_pct >= 30:
+        
+            score += 10
+            
+            onchain_warnings.append(
+            
+                f"CAUTION: Top 10 holders control {top10_holder_pct:.1f}% of supply"
+            
+        )
         risks = rug_data.get("risks") or []
 
         for risk in risks:
